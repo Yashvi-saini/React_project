@@ -1,17 +1,17 @@
-import logo from './logo.svg';
-import Title from './components/title';
-import Todoitem from './components/todoitem';
-import Button from './components/button';
+import React from 'react';
+import Navbar from './components/navbar';
+import Taskcontainer from './components/taskcontainer';
 import "./style.css";
 const App =()=>{
   return (
-    <div className="taskcontainer">
-      <Title/>
-       <Todoitem status="task1"/>
-       <Todoitem status="task2"/>
-       <Todoitem status="task3"/>
-       <Todoitem status="task4"/>
-      <Button/>
+   
+    <div className="outerbox">
+      <Navbar/>
+      <div className="columnbox">
+      <Taskcontainer title="To Do" />
+      <Taskcontainer title="In Progress" />
+      <Taskcontainer title="Done" />
+      </div>
     </div>
   );
 };

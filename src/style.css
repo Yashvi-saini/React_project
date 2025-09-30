@@ -32,3 +32,38 @@ body{
     margin:2px;
     padding-top:2px;
 }
+.columnbox{
+    margin-top:10px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    gap:30px;
+}
+.navbar{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(231, 94, 94);
+  color: rgb(38, 36, 36);
+  padding: 10px 20px;
+  border-radius:3px;
+  border:1px solid black;
+}
+.links{
+    list-style:none;
+    display:flex;
+    gap:10px;
+}
+.navtitle{
+    font-size:20px;
+    font-weight: bold;
+
+}
+a{
+    text-decoration:none;
+}
+.outerbox{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
