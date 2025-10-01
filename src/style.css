@@ -1,12 +1,14 @@
 *{
     margin:0px;
     padding:0px;
+    box-sizing:border-box;
 }
 body{
     background-color:bisque;
     display:flex;
     justify-content:center;
    padding-top:20rem;
+   min-height:100vh;
    overflow:hidden;
 }
 
@@ -60,8 +62,16 @@ body{
     display:flex;
     flex-direction:column;
     gap:20px;
+    width:100%;
 }
 .search{
     font-size:18px;
     width:50%;
+}
+.deletebutton{
+    background:transparent;
+}
+.task{
+    display:flex;
+    justify-content:space-between;
 }

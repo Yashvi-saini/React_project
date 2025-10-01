@@ -6,7 +6,8 @@ const Taskcontainer = ({
   onDragStart,
   onDragOver,
   onDropColumn,
-  onDropOnTask
+  onDropOnTask,
+  onDeleteTask
 }) => {
   return (
     <div
@@ -27,7 +28,9 @@ const Taskcontainer = ({
             onDropOnTask(col, index);
           }}
         >
-          {task}
+          <span >{task}</span>{
+            <button className="deletebutton" onClick={()=> onDeleteTask(col,index)}>X</button>
+          }
         </div>
       ))}
     </div>

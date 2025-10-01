@@ -14,8 +14,13 @@ const App = () => {
   const handleAddTask = (taskText) => {
     setTasks((prev) => ({
       ...prev,
-      todo: [...prev.todo, taskText]   // add to "todo"
+      todo: [...prev.todo, taskText]  //by default adding in todo
     }));
+  };
+  const handleDeleteTask = (col, index) => {
+  const newTasks = { ...tasks };
+  newTasks[col].splice(index, 1); //remove
+  setTasks(newTasks);
   };
 
   const handleDragStart = (task, col, index) => {
@@ -75,6 +80,7 @@ const newTasks = { ...tasks };
           onDragOver={handleDragOver}
           onDropColumn={handleDropColumn}
           onDropOnTask={handleDropOnTask}
+          onDeleteTask={handleDeleteTask} 
         />
         <Taskcontainer
           title="In Progress"
@@ -84,6 +90,7 @@ const newTasks = { ...tasks };
           onDragOver={handleDragOver}
           onDropColumn={handleDropColumn}
           onDropOnTask={handleDropOnTask}
+          onDeleteTask={handleDeleteTask} 
         />
         <Taskcontainer
           title="Done"
@@ -93,6 +100,7 @@ const newTasks = { ...tasks };
           onDragOver={handleDragOver}
           onDropColumn={handleDropColumn}
           onDropOnTask={handleDropOnTask}
+          onDeleteTask={handleDeleteTask} 
         />
       </div>
     </div>
