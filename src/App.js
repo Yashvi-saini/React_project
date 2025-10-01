@@ -8,13 +8,24 @@ const App = () => {
     inprogress: ["Task 3","Task 5","Task 6"],
     done: ["Task 4"]
   });
+
   const [draggedTask, setDraggedTask] = useState(null);
+
+  const handleAddTask = (taskText) => {
+    setTasks((prev) => ({
+      ...prev,
+      todo: [...prev.todo, taskText]   // add to "todo"
+    }));
+  };
+
   const handleDragStart = (task, col, index) => {
     setDraggedTask({ task, col, index });
   };
+
   const handleDragOver = (e) => {
     e.preventDefault();
   };
+
   const handleDropColumn = (col) => {
     if (!draggedTask) return;
 const newTasks = { ...tasks };
@@ -54,7 +65,7 @@ const newTasks = { ...tasks };
   
   return (
     <div className="outerbox">
-      <Navbar />
+      <Navbar  onAddTask={handleAddTask}/>
       <div className="columnbox">
         <Taskcontainer
           title="To Do"
