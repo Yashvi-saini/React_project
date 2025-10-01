@@ -1,18 +1,37 @@
 import React from 'react';
-import Title from './title';
-import Todoitem from './todoitem';
-import Button from './button';
-
-const Taskcontainer= ({title})=>{
-    return (
-  <div className="taskcontainer">
-    <Title text={title}/>
-    <Todoitem status="task1"/>
-       <Todoitem status="task2"/>
-       <Todoitem status="task3"/>
-       <Todoitem status="task4"/>
-      <Button/>
-  </div>
-    );
+const Taskcontainer = ({
+  title,
+  tasks,
+  col,
+  onDragStart,
+  onDragOver,
+  onDropColumn,
+  onDropOnTask
+}) => {
+  return (
+    <div
+      className="taskcontainer"
+      onDragOver={onDragOver}
+      onDrop={() => onDropColumn(col)}
+    >
+      <h2>{title}</h2>
+      {tasks.map((task, index) => (
+        <div
+          key={index}
+          className="task"
+          draggable
+          onDragStart={() => onDragStart(task, col, index)}
+          onDragOver={onDragOver}
+          onDrop={(e) => {
+            e.stopPropagation(); // prevent column drop
+            onDropOnTask(col, index);
+          }}
+        >
+          {task}
+        </div>
+      ))}
+    </div>
+  );
 };
+
 export default Taskcontainer;

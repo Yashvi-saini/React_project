@@ -49,21 +49,19 @@ body{
   border-radius:3px;
   border:1px solid black;
 }
-.links{
-    list-style:none;
-    display:flex;
-    gap:10px;
-}
+
 .navtitle{
-    font-size:20px;
+    font-size:30px;
     font-weight: bold;
 
 }
-a{
-    text-decoration:none;
-}
+
 .outerbox{
     display:flex;
     flex-direction:column;
     gap:20px;
+}
+.search{
+    font-size:18px;
+    width:50%;
 }
