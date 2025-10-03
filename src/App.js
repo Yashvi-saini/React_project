@@ -1,6 +1,7 @@
 import React ,{useState} from 'react';
 import Navbar from './components/navbar';
 import Taskcontainer from './components/taskcontainer';
+import AuthPage from "./components/authpage";
 import "./style.css";
 const App = () => {
   const [tasks, setTasks] = useState({
@@ -10,6 +11,16 @@ const App = () => {
   });
 
   const [draggedTask, setDraggedTask] = useState(null);
+ const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+ const handleAuthSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
+   const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("token");
+  };
 
   const handleAddTask = (taskText) => {
     setTasks((prev) => ({
@@ -67,10 +78,16 @@ const newTasks = { ...tasks };
     setTasks(newTasks);
     setDraggedTask(null);
   };
+  if (!isAuthenticated) {
+    return <AuthPage onAuthSuccess={handleAuthSuccess} />;
+  }
   
   return (
     <div className="outerbox">
       <Navbar  onAddTask={handleAddTask}/>
+      <button className="logout-btn" onClick={handleLogout}>
+        Logout
+      </button>
       <div className="columnbox">
         <Taskcontainer
           title="To Do"
